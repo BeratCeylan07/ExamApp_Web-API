@@ -7,6 +7,7 @@ using btk_exam_project_api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration.UserSecrets;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -25,17 +26,20 @@ namespace btk_exam_project_api.Controllers
             _configuration = configuration;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Kullanicilar>>> TeacherList(int subeID, int role)
+        public async Task<ActionResult<IEnumerable<Kullanicilar>>> TeacherList(int subeID)
         {
             return await _context.Kullanicilars.Where(x => x.SubeId == subeID && x.Role == 2).Select(s => new Kullanicilar()
             {
                 Id = s.Id,
                 Ad = s.Ad,
                 Soyad = s.Soyad,
-                Ders = s.Ders,
-                UserDersSets = s.UserDersSets,
+                UserDersSets = s.UserDersSets.Select(c => new UserDersSet()
+                {
+                    Ders = c.Ders,
+                }).ToList(),
                 IsActive = s.IsActive,
                 Eposta = s.Eposta,
+                Tel = s.Tel,
                 Uid = s.Uid
             }).OrderBy(o => o.Ad).ToListAsync();
         }
@@ -81,7 +85,38 @@ namespace btk_exam_project_api.Controllers
 
             return Ok();
         }
-
+        [HttpGet]
+        public async Task<ActionResult<Teacher_Detail_Model>> TeacherInfo(string teacherUID)
+        {
+            return await _context.Kullanicilars.Where(x => x.Uid == teacherUID).Select(s => new Teacher_Detail_Model()
+            {
+                teacherID = s.Id,
+                teacherUID = s.Uid,
+                setedLessonUID = s.UserDersSets.Select(f => f.Ders.Uid).First(),
+                Ad = s.Ad,
+                Soyad = s.Soyad,
+                Telefon = s.Tel,
+                Eposta = s.Eposta,
+                IsCreatedDate = s.IsCreatedDate,
+                IsModifiedDate = s.IsModifiedDate,
+                isCreatedUser = _context.Kullanicilars.Where(a => a.Id == s.IsCreatedUserid).First(),
+                IsModifiedUser = _context.Kullanicilars.Where(b => b.Id == s.IsModifiedUserid).First()
+            }).FirstAsync();
+        }
+        [HttpGet]
+        public async Task<ActionResult<Teacher_Sums_Model>> TeacherSums(string teacherUID)
+        {
+            DateTime today = DateTime.Today;
+            DateTime startOfWeek = GetStartOfWeek(today);
+            DateTime endOfWeek = GetEndOfWeek(today);
+            Teacher_Sums_Model sums = new Teacher_Sums_Model();
+            sums.toplam_ders_tanim = _context.TeacherHaftaGunSets.Where(x => x.Teacher.Uid == teacherUID).Count();
+            sums.gunluk_oturum_saat_toplam = _context.DersOturumUserSets.Where(x => x.UserDersSet.User.Uid == teacherUID && x.UserDersSet.User.Role == 2 && x.Oturum.Baslangic.Date == DateTime.Now.Date).Sum(t => (long)Convert.ToDouble(t.Oturum.Baslangic.Hour));
+            sums.gunluk_oturum_toplam = _context.DersOturumUserSets.Where(x => x.UserDersSet.User.Uid == teacherUID && x.UserDersSet.User.Role == 2 && x.Oturum.Baslangic.Date == DateTime.Now.Date).Count();
+            sums.haftalik_oturum_toplam = _context.DersOturumUserSets.Where(x => x.UserDersSet.User.Uid == teacherUID && x.UserDersSet.User.Role == 2 && x.Oturum.Baslangic >= startOfWeek && x.Oturum.Baslangic <= endOfWeek).Count();
+            sums.haftalik_oturum_saat_toplam = _context.DersOturumUserSets.Where(x => x.UserDersSet.User.Uid == teacherUID && x.UserDersSet.User.Role == 2 && x.Oturum.Baslangic >= startOfWeek && x.Oturum.Baslangic <= endOfWeek).Sum(t => (long)Convert.ToDouble(t.Oturum.Baslangic.Hour));
+            return Ok(sums);
+        }
         string createPassword()
         {
             Random rnd = new Random();
@@ -98,7 +133,7 @@ namespace btk_exam_project_api.Controllers
             ad = ad.Replace('ş', 's');
             ad = ad.Replace('ı', 'i');
             ad = ad.Replace('ç', 'c');
-            ad = ad.Replace(' ', '_');
+            ad = ad.ToUpper();
 
             soyad = soyad.ToLower();
             soyad = soyad.Replace('ö', 'o');
@@ -107,7 +142,7 @@ namespace btk_exam_project_api.Controllers
             soyad = soyad.Replace('ş', 's');
             soyad = soyad.Replace('ı', 'i');
             soyad = soyad.Replace('ç', 'c');
-            soyad = soyad.Replace(' ', '_');
+            soyad = soyad.ToUpper();
 
             var result = new TRNameSurname
             {
@@ -117,7 +152,16 @@ namespace btk_exam_project_api.Controllers
             return result;
 
         }
+        public static DateTime GetStartOfWeek(DateTime date)
+        {
+            int diff = (7 + (date.DayOfWeek - DayOfWeek.Monday)) % 7;
+            return date.AddDays(-1 * diff).Date;
+        }
 
+        public static DateTime GetEndOfWeek(DateTime date)
+        {
+            return GetStartOfWeek(date).AddDays(6);
+        }
         public class TRNameSurname
         {
             public string Ad { get; set; }

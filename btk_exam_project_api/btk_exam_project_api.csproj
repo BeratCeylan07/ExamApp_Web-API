@@ -25,11 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Controllers\" />
     <None Remove="JWTModel\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="JWTModel\" />
   </ItemGroup>
 </Project>

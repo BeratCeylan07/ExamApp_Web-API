@@ -30,16 +30,16 @@ namespace btk_exam_project_api.Controllers
 
         {
 
-                return await _context.Kullanicilars.Where(x => x.SubeId == subeID && x.Role == 1).Select(s => new Student_List_Model
-                {
-                    userUID = s.Uid,
-                    name = s.Ad,
-                    surname = s.Soyad,
-                    phone = s.Tel,
-                }).ToListAsync();
-           
+            return await _context.Kullanicilars.Where(x => x.SubeId == subeID && x.Role == 1).Select(s => new Student_List_Model
+            {
+                userUID = s.Uid,
+                name = s.Ad,
+                surname = s.Soyad,
+                phone = s.Tel,
+            }).ToListAsync();
+
         }
-        [HttpGet]   
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<DashBoardStudentListOfExam>>> DashBoardStudentList(int subeID)
         {
             return await _context.UserOturumSets.Where(x => x.User.SubeId == subeID).Select(s => new DashBoardStudentListOfExam
@@ -81,7 +81,7 @@ namespace btk_exam_project_api.Controllers
                 Tel = model.Telefon,
                 Eposta = model.Eposta,
                 IsActive = true,
-                KullaniciAdi = model.Ad.Substring(0, 2) + model.Soyad.Substring(0,2),
+                KullaniciAdi = model.Ad.Substring(0, 2) + model.Soyad.Substring(0, 2),
                 Sifre = createPassword(),
                 Role = model.role,
                 IsCreatedDate = DateTime.Now,
@@ -108,7 +108,7 @@ namespace btk_exam_project_api.Controllers
                 status = true,
                 student = student
             };
-            return StatusCode(200,response);
+            return StatusCode(200, response);
         }
         [HttpPost]
         public async Task<ActionResult<Student_Model>> EditUser([FromBody] Student_Model model)

@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{F240CB3F-EA21-40B4-A350-220B57230363}|https">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.btk__exam__project__api PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="btk_exam_project_api/Controllers/LessonController.cs">
+    <Files>
+      <File FileName="btk_exam_project_api/Controllers/LessonController.cs" Line="35" Column="1" />
+      <File FileName="btk_exam_project_api/Models/DersOturumUserSet.cs" Line="30" Column="28" />
+      <File FileName="btk_exam_project_api/Models/DersOturumSet.cs" Line="6" Column="22" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="btk_exam_project_api" selected="True">
+            <Node name="btk_exam_project_api">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

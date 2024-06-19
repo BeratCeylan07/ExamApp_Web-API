@@ -35,11 +35,11 @@ public partial class SnDbContext : DbContext
 
     public virtual DbSet<Sube> Subes { get; set; }
 
+    public virtual DbSet<TeacherHaftaGunSet> TeacherHaftaGunSets { get; set; }
+
     public virtual DbSet<UserDersSet> UserDersSets { get; set; }
 
     public virtual DbSet<UserOturumSet> UserOturumSets { get; set; }
-
-    public virtual DbSet<Uyruk> Uyruks { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -253,6 +253,12 @@ public partial class SnDbContext : DbContext
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("ID");
+            entity.Property(e => e.Baslangic)
+                .HasColumnType("datetime")
+                .HasColumnName("BASLANGIC");
+            entity.Property(e => e.Bitis)
+                .HasColumnType("datetime")
+                .HasColumnName("BITIS");
             entity.Property(e => e.Dersid)
                 .HasColumnType("int(11)")
                 .HasColumnName("DERSID");
@@ -271,7 +277,7 @@ public partial class SnDbContext : DbContext
                 .HasColumnName("isModifiedUserID");
             entity.Property(e => e.Tarih)
                 .HasColumnType("datetime")
-                .HasColumnName("TARIH");
+                .HasColumnName("tarih");
             entity.Property(e => e.Uid)
                 .HasMaxLength(100)
                 .HasColumnName("UID");
@@ -314,7 +320,6 @@ public partial class SnDbContext : DbContext
             entity.Property(e => e.OturumId)
                 .HasColumnType("int(11)")
                 .HasColumnName("OTURUM_ID");
-            entity.Property(e => e.Status).HasColumnType("int(11)");
             entity.Property(e => e.Uid)
                 .HasMaxLength(100)
                 .HasColumnName("UID");
@@ -530,6 +535,33 @@ public partial class SnDbContext : DbContext
                 .HasColumnName("UNVAN");
         });
 
+        modelBuilder.Entity<TeacherHaftaGunSet>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("TEACHER_HAFTA_GUN_SET");
+
+            entity.HasIndex(e => e.Teacherid, "TEACHERID");
+
+            entity.Property(e => e.Id)
+                .HasColumnType("int(11)")
+                .HasColumnName("ID");
+            entity.Property(e => e.Gun)
+                .HasMaxLength(50)
+                .HasColumnName("GUN");
+            entity.Property(e => e.Teacherid)
+                .HasColumnType("int(11)")
+                .HasColumnName("TEACHERID");
+            entity.Property(e => e.Uid)
+                .HasMaxLength(150)
+                .HasColumnName("UID");
+
+            entity.HasOne(d => d.Teacher).WithMany(p => p.TeacherHaftaGunSets)
+                .HasForeignKey(d => d.Teacherid)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("teacher_hafta_gun_set_ibfk_1");
+        });
+
         modelBuilder.Entity<UserDersSet>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
@@ -631,46 +663,6 @@ public partial class SnDbContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("user_oturum_set_ibfk_2");
-        });
-
-        modelBuilder.Entity<Uyruk>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
-            entity.ToTable("uyruk");
-
-            entity.HasIndex(e => e.SubeId, "subeID");
-
-            entity.Property(e => e.Id)
-                .HasColumnType("int(11)")
-                .HasColumnName("ID");
-            entity.Property(e => e.IsActive).HasColumnName("isActive");
-            entity.Property(e => e.IsCreatedDate)
-                .HasColumnType("datetime")
-                .HasColumnName("isCreatedDate");
-            entity.Property(e => e.IsCreatedUserId)
-                .HasColumnType("int(11)")
-                .HasColumnName("isCreatedUserID");
-            entity.Property(e => e.IsModifiedDate)
-                .HasColumnType("datetime")
-                .HasColumnName("isModifiedDate");
-            entity.Property(e => e.IsModifiedUserId)
-                .HasColumnType("int(11)")
-                .HasColumnName("isModifiedUserID");
-            entity.Property(e => e.SubeId)
-                .HasColumnType("int(11)")
-                .HasColumnName("subeID");
-            entity.Property(e => e.Uid)
-                .HasMaxLength(150)
-                .HasColumnName("UID");
-            entity.Property(e => e.UyrukBaslik)
-                .HasMaxLength(150)
-                .HasColumnName("uyruk_baslik");
-
-            entity.HasOne(d => d.Sube).WithMany(p => p.Uyruks)
-                .HasForeignKey(d => d.SubeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("uyruk_ibfk_1");
         });
 
         OnModelCreatingPartial(modelBuilder);

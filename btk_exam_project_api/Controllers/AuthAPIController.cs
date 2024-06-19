@@ -26,7 +26,7 @@ namespace btk_exam_project_api.Controllers
         private readonly JWTSettingsModel _jwtsettings;
 
         public AuthAPIController(SnDbContext context, IConfiguration configuration, IOptions<JWTSettingsModel> jwtsetting)
-        { 
+        {
             _context = context;
             _configuration = configuration;
             _jwtsettings = jwtsetting.Value;

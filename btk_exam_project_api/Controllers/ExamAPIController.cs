@@ -45,7 +45,7 @@ namespace btk_exam_project_api.Controllers
                 uid = s.Uid,
                 exam = s.DenemeAdi,
                 catandpub = s.SinavKategori + " / " + s.YayinAdi,
-                
+
             }).ToListAsync();
         }
         [HttpGet]
@@ -223,7 +223,7 @@ namespace btk_exam_project_api.Controllers
                 ToplamKesinKayit = s.UserOturumSets.Where(x => x.Status != 0).Count()
             }).FirstOrDefaultAsync();
         }
-  
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Exam_Session_Student_List_Model>>> examUserSetList(string examSessionUID)
         {
@@ -284,7 +284,7 @@ namespace btk_exam_project_api.Controllers
             if (dortBirRule == true)
             {
                 sessionset.Net = net_Sonuc;
-            }   
+            }
             else
             {
                 sessionset.Net = model.d;
@@ -316,7 +316,7 @@ namespace btk_exam_project_api.Controllers
         public async Task<DenemeSinav> GetExamUID(string sessionUID)
         {
             return await _context.DenemeSinaviOturums.Where(x => x.Uid == sessionUID).Select(s => s.DenemeSinav).FirstAsync();
-           
+
         }
         [HttpPost]
         public async Task<ActionResult<Student_Exam_Set_Model>> SingleStudentExamSet([FromBody] Student_Exam_Set_Model model)
@@ -414,7 +414,7 @@ namespace btk_exam_project_api.Controllers
             await _context.SaveChangesAsync();
 
             return Ok();
-            
+
         }
         [HttpPost]
         public async Task<ActionResult<Wp_Log_Post_Model>> WP_LOG([FromBody] Wp_Log_Post_Model model)
@@ -449,7 +449,7 @@ namespace btk_exam_project_api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Wp_Log_Get_Model>>> wp_logs(int type, string uid)
         {
-            switch(type)
+            switch (type)
             {
                 case 1:
                     return await _context.KullaniciMesajLogs.Where(x => x.User.Uid == uid).Select(s => new Wp_Log_Get_Model()
@@ -457,7 +457,7 @@ namespace btk_exam_project_api.Controllers
                         Uid = s.Uid,
                         Student = s.User,
                         IsActive = s.IsActive,
-                        Mesaj = s.Mesaj.ToString().Replace("%0A","\n"),
+                        Mesaj = s.Mesaj.ToString().Replace("%0A", "\n"),
                         MesajTarih = s.MesajTarih,
                         IsCreatedUserid = s.IsCreatedUserid,
                         IsCreatedDate = s.IsCreatedDate,
@@ -498,7 +498,7 @@ namespace btk_exam_project_api.Controllers
                 default:
                     return StatusCode(400, "Eksik Parametre");
 
-            }       
+            }
         }
         void postActionLog(ActionLog model)
         {

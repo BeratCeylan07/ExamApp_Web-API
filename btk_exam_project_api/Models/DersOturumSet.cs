@@ -13,6 +13,10 @@ public partial class DersOturumSet
 
     public DateTime Tarih { get; set; }
 
+    public DateTime Baslangic { get; set; }
+
+    public DateTime Bitis { get; set; }
+
     public int IsCreatedUserId { get; set; }
 
     public DateTime IsCreatedDate { get; set; }
