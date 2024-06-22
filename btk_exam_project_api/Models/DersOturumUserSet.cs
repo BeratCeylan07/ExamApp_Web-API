@@ -11,7 +11,7 @@ public partial class DersOturumUserSet
 
     public int OturumId { get; set; }
 
-    public int UserDersSetId { get; set; }
+    public int StudentId { get; set; }
 
     public bool Status { get; set; }
 
@@ -29,5 +29,5 @@ public partial class DersOturumUserSet
 
     public virtual DersOturumSet Oturum { get; set; } = null!;
 
-    public virtual UserDersSet UserDersSet { get; set; } = null!;
+    public virtual Kullanicilar Student { get; set; } = null!;
 }

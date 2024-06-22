@@ -43,7 +43,7 @@ public partial class SnDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=localhost;database=sn_DB;user=root", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.28-mariadb"));
+        => optionsBuilder.UseMySql("server=localhost;database=sn_DB;user=root", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.32-mariadb"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -55,7 +55,7 @@ public partial class SnDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("ACTION_LOGS");
+            entity.ToTable("action_logs");
 
             entity.HasIndex(e => e.SubeId, "subeID");
 
@@ -89,7 +89,7 @@ public partial class SnDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("DENEME_SINAV");
+            entity.ToTable("deneme_sinav");
 
             entity.HasIndex(e => e.IsCreatedUserid, "INDEX_CREATED_USERID");
 
@@ -150,7 +150,7 @@ public partial class SnDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("DENEME_SINAVI_OTURUM");
+            entity.ToTable("deneme_sinavi_oturum");
 
             entity.HasIndex(e => e.IsCreatedUserid, "INDEX_CREATED_USERID");
 
@@ -203,7 +203,7 @@ public partial class SnDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("DERS");
+            entity.ToTable("ders");
 
             entity.HasIndex(e => e.SubeId, "subeID");
 
@@ -246,9 +246,11 @@ public partial class SnDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("DERS_OTURUM_SET");
+            entity.ToTable("ders_oturum_set");
 
             entity.HasIndex(e => e.Dersid, "DERSID");
+
+            entity.HasIndex(e => e.Teacherid, "TEACHERID");
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
@@ -278,6 +280,9 @@ public partial class SnDbContext : DbContext
             entity.Property(e => e.Tarih)
                 .HasColumnType("datetime")
                 .HasColumnName("tarih");
+            entity.Property(e => e.Teacherid)
+                .HasColumnType("int(11)")
+                .HasColumnName("TEACHERID");
             entity.Property(e => e.Uid)
                 .HasMaxLength(100)
                 .HasColumnName("UID");
@@ -286,17 +291,22 @@ public partial class SnDbContext : DbContext
                 .HasForeignKey(d => d.Dersid)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("ders_oturum_set_ibfk_1");
+
+            entity.HasOne(d => d.Teacher).WithMany(p => p.DersOturumSets)
+                .HasForeignKey(d => d.Teacherid)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("ders_oturum_set_ibfk_2");
         });
 
         modelBuilder.Entity<DersOturumUserSet>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("DERS_OTURUM_USER_SET");
+            entity.ToTable("ders_oturum_user_set");
 
             entity.HasIndex(e => e.OturumId, "OTURUM_ID");
 
-            entity.HasIndex(e => e.UserDersSetId, "USER_DERS_SET_ID");
+            entity.HasIndex(e => e.StudentId, "STUDENT_ID");
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
@@ -320,20 +330,20 @@ public partial class SnDbContext : DbContext
             entity.Property(e => e.OturumId)
                 .HasColumnType("int(11)")
                 .HasColumnName("OTURUM_ID");
+            entity.Property(e => e.StudentId)
+                .HasColumnType("int(11)")
+                .HasColumnName("STUDENT_ID");
             entity.Property(e => e.Uid)
                 .HasMaxLength(100)
                 .HasColumnName("UID");
-            entity.Property(e => e.UserDersSetId)
-                .HasColumnType("int(11)")
-                .HasColumnName("USER_DERS_SET_ID");
 
             entity.HasOne(d => d.Oturum).WithMany(p => p.DersOturumUserSets)
                 .HasForeignKey(d => d.OturumId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("ders_oturum_user_set_ibfk_1");
 
-            entity.HasOne(d => d.UserDersSet).WithMany(p => p.DersOturumUserSets)
-                .HasForeignKey(d => d.UserDersSetId)
+            entity.HasOne(d => d.Student).WithMany(p => p.DersOturumUserSets)
+                .HasForeignKey(d => d.StudentId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("ders_oturum_user_set_ibfk_2");
         });
@@ -342,7 +352,7 @@ public partial class SnDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("KULLANICI_MESAJ_LOG");
+            entity.ToTable("kullanici_mesaj_log");
 
             entity.HasIndex(e => e.SubeId, "sube_user_message_logs");
 
@@ -395,7 +405,7 @@ public partial class SnDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("KULLANICILAR");
+            entity.ToTable("kullanicilar");
 
             entity.HasIndex(e => e.IsCreatedUserid, "CREATED_USER_INDEX");
 
@@ -457,7 +467,7 @@ public partial class SnDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("STUDENT_OTHER_INFO");
+            entity.ToTable("student_other_info");
 
             entity.HasIndex(e => e.UserId, "userID");
 
@@ -506,7 +516,7 @@ public partial class SnDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("SUBE");
+            entity.ToTable("sube");
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
@@ -539,7 +549,7 @@ public partial class SnDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("TEACHER_HAFTA_GUN_SET");
+            entity.ToTable("teacher_hafta_gun_set");
 
             entity.HasIndex(e => e.Teacherid, "TEACHERID");
 
@@ -566,7 +576,7 @@ public partial class SnDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("USER_DERS_SET");
+            entity.ToTable("user_ders_set");
 
             entity.HasIndex(e => e.Dersid, "DERSID");
 
@@ -613,7 +623,7 @@ public partial class SnDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("USER_OTURUM_SET");
+            entity.ToTable("user_oturum_set");
 
             entity.HasIndex(e => e.IsCreatedUserid, "INDEX_CREATED_USERID");
 

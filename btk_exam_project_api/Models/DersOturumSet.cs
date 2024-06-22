@@ -11,6 +11,8 @@ public partial class DersOturumSet
 
     public int Dersid { get; set; }
 
+    public int Teacherid { get; set; }
+
     public DateTime Tarih { get; set; }
 
     public DateTime Baslangic { get; set; }
@@ -30,4 +32,6 @@ public partial class DersOturumSet
     public virtual Der Ders { get; set; } = null!;
 
     public virtual ICollection<DersOturumUserSet> DersOturumUserSets { get; set; } = new List<DersOturumUserSet>();
+
+    public virtual Kullanicilar Teacher { get; set; } = null!;
 }

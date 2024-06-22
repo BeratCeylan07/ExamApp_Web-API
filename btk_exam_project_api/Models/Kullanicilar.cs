@@ -35,6 +35,10 @@ public partial class Kullanicilar
 
     public int IsModifiedUserid { get; set; }
 
+    public virtual ICollection<DersOturumSet> DersOturumSets { get; set; } = new List<DersOturumSet>();
+
+    public virtual ICollection<DersOturumUserSet> DersOturumUserSets { get; set; } = new List<DersOturumUserSet>();
+
     public virtual ICollection<KullaniciMesajLog> KullaniciMesajLogs { get; set; } = new List<KullaniciMesajLog>();
 
     public virtual ICollection<StudentOtherInfo> StudentOtherInfos { get; set; } = new List<StudentOtherInfo>();

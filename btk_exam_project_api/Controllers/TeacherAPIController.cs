@@ -111,10 +111,10 @@ namespace btk_exam_project_api.Controllers
             DateTime endOfWeek = GetEndOfWeek(today);
             Teacher_Sums_Model sums = new Teacher_Sums_Model();
             sums.toplam_ders_tanim = _context.TeacherHaftaGunSets.Where(x => x.Teacher.Uid == teacherUID).Count();
-            sums.gunluk_oturum_saat_toplam = _context.DersOturumUserSets.Where(x => x.UserDersSet.User.Uid == teacherUID && x.UserDersSet.User.Role == 2 && x.Oturum.Baslangic.Date == DateTime.Now.Date).Sum(t => (long)Convert.ToDouble(t.Oturum.Baslangic.Hour));
-            sums.gunluk_oturum_toplam = _context.DersOturumUserSets.Where(x => x.UserDersSet.User.Uid == teacherUID && x.UserDersSet.User.Role == 2 && x.Oturum.Baslangic.Date == DateTime.Now.Date).Count();
-            sums.haftalik_oturum_toplam = _context.DersOturumUserSets.Where(x => x.UserDersSet.User.Uid == teacherUID && x.UserDersSet.User.Role == 2 && x.Oturum.Baslangic >= startOfWeek && x.Oturum.Baslangic <= endOfWeek).Count();
-            sums.haftalik_oturum_saat_toplam = _context.DersOturumUserSets.Where(x => x.UserDersSet.User.Uid == teacherUID && x.UserDersSet.User.Role == 2 && x.Oturum.Baslangic >= startOfWeek && x.Oturum.Baslangic <= endOfWeek).Sum(t => (long)Convert.ToDouble(t.Oturum.Baslangic.Hour));
+            sums.gunluk_oturum_saat_toplam = _context.DersOturumSets.Where(x => x.Teacher.Uid == teacherUID && x.Teacher.Role == 2 && x.Baslangic.Date == DateTime.Now.Date).Sum(t => (long)Convert.ToDouble(t.Baslangic.Hour));
+            sums.gunluk_oturum_toplam = _context.DersOturumSets.Where(x => x.Teacher.Uid == teacherUID && x.Teacher.Role == 2 && x.Baslangic.Date == DateTime.Now.Date).Count();
+            sums.haftalik_oturum_toplam = _context.DersOturumSets.Where(x => x.Teacher.Uid == teacherUID && x.Teacher.Role == 2 && x.Baslangic >= startOfWeek && x.Baslangic <= endOfWeek).Count();
+            sums.haftalik_oturum_saat_toplam = _context.DersOturumSets.Where(x => x.Teacher.Uid == teacherUID && x.Teacher.Role == 2 && x.Baslangic >= startOfWeek && x.Baslangic <= endOfWeek).Sum(t => (long)Convert.ToDouble(t.Baslangic.Hour));
             return Ok(sums);
         }
         string createPassword()

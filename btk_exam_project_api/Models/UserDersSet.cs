@@ -25,7 +25,5 @@ public partial class UserDersSet
 
     public virtual Der Ders { get; set; } = null!;
 
-    public virtual ICollection<DersOturumUserSet> DersOturumUserSets { get; set; } = new List<DersOturumUserSet>();
-
     public virtual Kullanicilar User { get; set; } = null!;
 }
