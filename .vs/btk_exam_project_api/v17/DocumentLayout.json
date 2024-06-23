@@ -26,12 +26,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -42,8 +38,7 @@
               "RelativeToolTip": "btk_exam_project_api\\CustomModels\\lesson_user_set_list_model.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-21T16:50:55.785Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-21T16:50:55.785Z"
             },
             {
               "$type": "Document",
@@ -55,8 +50,7 @@
               "RelativeToolTip": "btk_exam_project_api\\Controllers\\TeacherAPIController.cs",
               "ViewState": "AQIAAHAAAAAAMzMzMzMuwHYAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T21:24:06.313Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-20T21:24:06.313Z"
             },
             {
               "$type": "Document",
@@ -66,7 +60,7 @@
               "RelativeDocumentMoniker": "btk_exam_project_api\\Controllers\\LessonController.cs",
               "ToolTip": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\Controllers\\LessonController.cs",
               "RelativeToolTip": "btk_exam_project_api\\Controllers\\LessonController.cs",
-              "ViewState": "AQIAAFQAAAAAAAAAAAAQwF8AAAAmAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAALcAAABdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-20T18:37:02.429Z",
               "EditorCaption": ""
@@ -81,8 +75,7 @@
               "RelativeToolTip": "btk_exam_project_api\\CustomModels\\Student_Ders_Set_List_Model.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T20:59:28.1Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-20T20:59:28.1Z"
             }
           ]
         }

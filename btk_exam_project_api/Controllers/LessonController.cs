@@ -34,11 +34,6 @@ namespace btk_exam_project_api.Controllers
                 DersAd = s.DersAd,
                 Bilgi = s.Bilgi,
                 DersOturumSets = s.DersOturumSets,
-                UserDersSets = s.UserDersSets.Select(j => new UserDersSet()
-                {
-                    Uid = j.Uid,
-                    User = j.User
-                }).ToList(),
                 IsActive = s.IsActive
             }).ToListAsync();
         }
@@ -103,6 +98,35 @@ namespace btk_exam_project_api.Controllers
             }).FirstAsync();
         }
         [HttpGet]
+        public async Task<ActionResult<Lesson_Record_Sum_Model>> lesson_record_sums(string lessonUID)
+        {
+            var result = new Lesson_Record_Sum_Model();
+            result.toplamOturum = await _context.DersOturumSets.Where(x => x.Ders.Uid == lessonUID && x.IsActive == true).CountAsync();
+            result.toplamOgretmen = await _context.UserDersSets.Where(x => x.Ders.Uid == lessonUID && x.IsActive).Select(s => s.Userid).Distinct().CountAsync();
+            result.toplamOgrenci = await _context.DersOturumUserSets.Where(x => x.Oturum.Ders.Uid == lessonUID && x.Oturum.IsActive == true).CountAsync();
+            return result;
+        }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<LessonDashboardChartsModel>>> lessonCharts(int subeID, bool daily)
+        {
+            if (daily)
+            {
+                return await _context.DersOturumSets.Where(x => x.Ders.SubeId == subeID && x.Tarih.Date == DateTime.Now.Date).Select(s => new LessonDashboardChartsModel()
+                {
+                    label = s.Ders.DersAd,
+                    y = s.DersOturumUserSets.Count()
+                }).ToListAsync();
+            }
+            else
+            {
+                return await _context.DersOturumSets.Where(x => x.Ders.SubeId == subeID).Select(s => new LessonDashboardChartsModel()
+                {
+                    label = s.Ders.DersAd,
+                    y = s.DersOturumUserSets.Count()
+                }).ToListAsync();
+            }
+        }
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<DersOturumSet>>> lesson_session_list(string lessonUID)
         {
             return await _context.DersOturumSets.Where(x => x.Ders.Uid == lessonUID).Select(s => new DersOturumSet()
@@ -125,6 +149,39 @@ namespace btk_exam_project_api.Controllers
                 student = s.Student,
                 kayitDate = s.IsCreatedDate
             }).ToListAsync();
+        }
+        [HttpGet]
+        public async Task<ActionResult<Ders_Oturum_Record_Model>> session_of_Lesson_Info(string lessonSessionUID)
+        {
+            return await _context.DersOturumSets.Where(x => x.Uid == lessonSessionUID).Select(s => new Ders_Oturum_Record_Model()
+            {
+                Uid = s.Uid,
+                Ders = s.Ders,
+                Baslangic = s.Baslangic,
+                Bitis = s.Bitis,
+                IsActive = s.IsActive,
+                IsCreatedDate = s.IsCreatedDate,
+                IsModifiedDate = s.IsModifiedDate,
+                Tarih = s.Tarih,
+                Teacher = s.Teacher,
+                IsCreatedUser = _context.Kullanicilars.Where(x => x.Id == s.IsCreatedUserId).First(),
+                IsModifiedUser = _context.Kullanicilars.Where(x => x.Id == s.IsModifiedUserId).First(),
+                DersOturumUserSets = s.DersOturumUserSets.Select(s => new DersOturumUserSet()
+                {
+                    Uid = s.Uid,
+                    IsActive = s.IsActive,
+                    Bilgi = s.Bilgi,
+                    IsCreatedDate = s.IsCreatedDate,
+                    IsModifiedDate = s.IsModifiedDate,
+                    Status = s.Status,
+                    Student = s.Student
+                }).ToList()
+            }).FirstAsync();
+        }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Kullanicilar>>> teacher_list(int subeID)
+        {
+            return await _context.Kullanicilars.Where(x => x.SubeId == subeID).ToListAsync();
         }
     }
 }
