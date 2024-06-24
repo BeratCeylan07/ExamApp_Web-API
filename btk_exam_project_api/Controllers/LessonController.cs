@@ -26,14 +26,15 @@ namespace btk_exam_project_api.Controllers
             _configuration = configuration;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Der>>> lesson_list(int subeID)
+        public async Task<ActionResult<IEnumerable<Lesson_List_Model>>> lesson_list(int subeID)
         {
-            return await _context.Ders.Where(x => x.SubeId == subeID).Select(s => new Der()
+            return await _context.Ders.Where(x => x.SubeId == subeID).Select(s => new Lesson_List_Model()
             {
                 Uid = s.Uid,
                 DersAd = s.DersAd,
                 Bilgi = s.Bilgi,
                 DersOturumSets = s.DersOturumSets,
+                toplamKayitliOgrenci = _context.DersOturumUserSets.Where(h => h.Oturum.Ders.Uid == s.Uid).Count(),
                 IsActive = s.IsActive
             }).ToListAsync();
         }
@@ -178,6 +179,69 @@ namespace btk_exam_project_api.Controllers
                 }).ToList()
             }).FirstAsync();
         }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<DersOturumUserSet>>> student_list_of_lessonSession(string lessonSessionUID)
+        {
+            return await _context.DersOturumUserSets.Where(x => x.Oturum.Uid == lessonSessionUID).Select(s => new DersOturumUserSet()
+            {
+                Uid = s.Uid,
+                Student = s.Student,
+                Bilgi = s.Bilgi,
+                IsActive = s.IsActive,
+                Status = s.Status,
+                IsCreatedDate = s.IsCreatedDate,
+            }).ToListAsync();
+        }
+        [HttpPost]
+        public async Task<ActionResult<Lesson_New_Session_Model>> new_lesson_session([FromBody] Lesson_New_Session_Model model)
+        {
+            int dersID = await _context.Ders.Where(x => x.Uid == model.lessonUID).Select(s => s.Id).FirstAsync();
+            int teacherID = await _context.Kullanicilars.Where(x => x.Uid == model.teacherUID).Select(s => s.Id).FirstAsync();
+            var new_session = new DersOturumSet
+            {
+                Uid = Guid.NewGuid().ToString(),
+                Baslangic = Convert.ToDateTime(model.baslangic),
+                Bitis = Convert.ToDateTime(model.bitis),
+                Tarih = model.tarih,
+                IsCreatedDate = DateTime.Now,
+                IsCreatedUserId = model.userID,
+                IsModifiedDate = DateTime.Now,
+                IsModifiedUserId = model.userID,
+                IsActive = true,
+                Teacherid = teacherID,
+                Dersid = dersID
+            };
+            await _context.DersOturumSets.AddAsync(new_session);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+        [HttpPost]
+        public async Task<ActionResult<Lesson_Student_Set>> student_lesson_session_set([FromBody] Lesson_Student_Set model)
+        {
+            int lessonID = await _context.DersOturumSets.Where(x => x.Uid == model.lessonSessionUID).Select(s => s.Id).FirstAsync();
+            int studentID = await _context.Kullanicilars.Where(x => x.Uid == model.studentUID).Select(s => s.Id).FirstAsync();
+            var lesso_student_set = new DersOturumUserSet
+            {
+                Uid = Guid.NewGuid().ToString(),
+                IsCreatedDate = DateTime.Now,
+                IsModifiedDate = DateTime.Now,
+                IsCreatedUserId = model.userID,
+                IsModifiedUserId = model.userID,
+                Bilgi = model.bilgi,
+                OturumId = lessonID,
+                StudentId = studentID,
+                IsActive = true,
+                Status = 1
+            };
+            await _context.DersOturumUserSets.AddAsync(lesso_student_set);
+            await _context.SaveChangesAsync();
+            return Ok();
+
+        }
+        
+
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Kullanicilar>>> teacher_list(int subeID)
         {

@@ -312,9 +312,7 @@ public partial class SnDbContext : DbContext
                 .HasColumnType("int(11)")
                 .HasColumnName("ID");
             entity.Property(e => e.Bilgi).HasColumnType("text");
-            entity.Property(e => e.IsActive)
-                .HasColumnType("int(11)")
-                .HasColumnName("isActive");
+            entity.Property(e => e.IsActive).HasColumnName("isActive");
             entity.Property(e => e.IsCreatedDate)
                 .HasColumnType("datetime")
                 .HasColumnName("isCreatedDate");
@@ -330,6 +328,7 @@ public partial class SnDbContext : DbContext
             entity.Property(e => e.OturumId)
                 .HasColumnType("int(11)")
                 .HasColumnName("OTURUM_ID");
+            entity.Property(e => e.Status).HasColumnType("int(11)");
             entity.Property(e => e.StudentId)
                 .HasColumnType("int(11)")
                 .HasColumnName("STUDENT_ID");

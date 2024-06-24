@@ -13,7 +13,7 @@ public partial class DersOturumUserSet
 
     public int StudentId { get; set; }
 
-    public bool Status { get; set; }
+    public int Status { get; set; }
 
     public string Bilgi { get; set; } = null!;
 
@@ -25,7 +25,7 @@ public partial class DersOturumUserSet
 
     public DateTime IsModifiedDate { get; set; }
 
-    public int IsActive { get; set; }
+    public bool IsActive { get; set; }
 
     public virtual DersOturumSet Oturum { get; set; } = null!;
 
