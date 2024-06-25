@@ -146,7 +146,7 @@ namespace btk_exam_project_api.Controllers
         {
             return await _context.DersOturumUserSets.Where(x => x.Oturum.Ders.Uid == lessonUID).Select(s => new lesson_user_set_list_model()
             {
-                oturum = s.Oturum,
+                oturum = s.Oturum.Tarih.ToString("dd.MM.yyyy") + " / " + s.Oturum.Baslangic.ToString("HH:mm") + " - " + s.Oturum.Bitis.ToString("HH:mm"),
                 student = s.Student,
                 kayitDate = s.IsCreatedDate
             }).ToListAsync();

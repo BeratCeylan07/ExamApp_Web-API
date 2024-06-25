@@ -27,9 +27,7 @@ namespace btk_exam_project_api.Controllers
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Student_List_Model>>> UserList(int subeID)
-
         {
-
             return await _context.Kullanicilars.Where(x => x.SubeId == subeID && x.Role == 1).Select(s => new Student_List_Model
             {
                 userUID = s.Uid,
@@ -37,7 +35,6 @@ namespace btk_exam_project_api.Controllers
                 surname = s.Soyad,
                 phone = s.Tel,
             }).ToListAsync();
-
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DashBoardStudentListOfExam>>> DashBoardStudentList(int subeID)

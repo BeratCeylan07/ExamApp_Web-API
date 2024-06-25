@@ -26,19 +26,15 @@ namespace btk_exam_project_api.Controllers
             _configuration = configuration;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Kullanicilar>>> TeacherList(int subeID)
+        public async Task<ActionResult<IEnumerable<Teacher_List_Model>>> TeacherList(int subeID)
         {
-            return await _context.Kullanicilars.Where(x => x.SubeId == subeID && x.Role == 2).Select(s => new Kullanicilar()
+            return await _context.Kullanicilars.Where(x => x.SubeId == subeID && x.Role == 2).Select(s => new Teacher_List_Model()
             {
                 Id = s.Id,
                 Ad = s.Ad,
                 Soyad = s.Soyad,
-                UserDersSets = s.UserDersSets.Select(c => new UserDersSet()
-                {
-                    Ders = c.Ders,
-                }).ToList(),
+                DersAd = s.UserDersSets.Select(s => s.Ders.DersAd).First(),
                 IsActive = s.IsActive,
-                Eposta = s.Eposta,
                 Tel = s.Tel,
                 Uid = s.Uid
             }).OrderBy(o => o.Ad).ToListAsync();

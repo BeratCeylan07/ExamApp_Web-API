@@ -397,7 +397,7 @@ namespace btk_exam_project_api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Kullanicilar>>> StudentListNotInExam(string examUID)
         {
-            return await _context.Kullanicilars.Where(x => x.UserOturumSets.Where(y => y.Oturum.DenemeSinav.Uid == examUID).Count() <= 0).ToListAsync();
+            return await _context.Kullanicilars.Where(x => x.UserOturumSets.Where(y => y.Oturum.DenemeSinav.Uid == examUID).Count() <= 0 && x.Role == 1).ToListAsync();
         }
         [HttpPost]
         public async Task<ActionResult<Student_Yoklama_Model>> sinavYoklama([FromBody] Student_Yoklama_Model model)
