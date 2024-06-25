@@ -7,8 +7,6 @@ public partial class ActionLog
 {
     public int Id { get; set; }
 
-    public int SubeId { get; set; }
-
     public string Baslik { get; set; } = null!;
 
     public string Aciklama { get; set; } = null!;
@@ -20,4 +18,6 @@ public partial class ActionLog
     public string Udi { get; set; } = null!;
 
     public string ActionUid { get; set; } = null!;
+
+    public virtual Kullanicilar User { get; set; } = null!;
 }

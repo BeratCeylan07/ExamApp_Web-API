@@ -35,6 +35,8 @@ public partial class Kullanicilar
 
     public int IsModifiedUserid { get; set; }
 
+    public virtual ICollection<ActionLog> ActionLogs { get; set; } = new List<ActionLog>();
+
     public virtual ICollection<DersOturumSet> DersOturumSets { get; set; } = new List<DersOturumSet>();
 
     public virtual ICollection<DersOturumUserSet> DersOturumUserSets { get; set; } = new List<DersOturumUserSet>();

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("btk_exam_project_api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f5064e0c7b129ab5ffcd46e1001538ab9b033b19")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3558d65867317580c709c0d8f75072ae808cd7a")]
 [assembly: System.Reflection.AssemblyProductAttribute("btk_exam_project_api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("btk_exam_project_api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

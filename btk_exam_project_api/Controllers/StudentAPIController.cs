@@ -98,7 +98,6 @@ namespace btk_exam_project_api.Controllers
                 Baslik = "Öğrenci İşlemleri",
                 Aciklama = "Yeni Öğrenci Kaydı Yapıldı",
                 UserId = model.userID,
-                SubeId = model.subeID
             };
             postActionLog(actionLog);
             StudentReponseModel response = new StudentReponseModel
@@ -160,7 +159,6 @@ namespace btk_exam_project_api.Controllers
                 Baslik = "Öğrenci İşlemi",
                 Aciklama = "Öğrenci Bilgileri Güncellendi",
                 UserId = model.userID,
-                SubeId = model.subeID
             };
             postActionLog(actionLog);
             StudentReponseModel response = new StudentReponseModel
@@ -203,7 +201,6 @@ namespace btk_exam_project_api.Controllers
                 Aciklama = model.Aciklama,
                 IsCreatedDate = DateTime.Now,
                 ActionUid = model.ActionUid,
-                SubeId = model.SubeId,
                 UserId = model.UserId
             };
             _context.ActionLogs.Add(action_log);

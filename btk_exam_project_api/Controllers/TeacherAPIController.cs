@@ -99,8 +99,8 @@ namespace btk_exam_project_api.Controllers
                 Eposta = s.Eposta,
                 IsCreatedDate = s.IsCreatedDate,
                 IsModifiedDate = s.IsModifiedDate,
-                isCreatedUser = _context.Kullanicilars.Where(a => a.Id == s.IsCreatedUserid).First(),
-                IsModifiedUser = _context.Kullanicilars.Where(b => b.Id == s.IsModifiedUserid).First()
+                isCreatedUser = _context.Kullanicilars.Where(a => a.Id == s.IsCreatedUserid).Select(s => s.KullaniciAdi).First(),
+                IsModifiedUser = _context.Kullanicilars.Where(b => b.Id == s.IsModifiedUserid).Select(s => s.KullaniciAdi).First()
             }).FirstAsync();
         }
         [HttpGet]

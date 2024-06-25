@@ -9,8 +9,6 @@ public partial class KullaniciMesajLog
 
     public string Uid { get; set; } = null!;
 
-    public int SubeId { get; set; }
-
     public int UserId { get; set; }
 
     public string Mesaj { get; set; } = null!;
@@ -26,8 +24,6 @@ public partial class KullaniciMesajLog
     public bool IsActive { get; set; }
 
     public DateTime MesajTarih { get; set; }
-
-    public virtual Sube Sube { get; set; } = null!;
 
     public virtual Kullanicilar User { get; set; } = null!;
 }

@@ -28,7 +28,7 @@ namespace btk_exam_project_api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Log_List_Model>>> getLogList(string actionuid, int subeid)
         {
-            return await _context.ActionLogs.Where(x => x.SubeId == subeid && x.ActionUid == actionuid).Select(s => new Log_List_Model()
+            return await _context.ActionLogs.Where(x => x.User.SubeId == subeid && x.ActionUid == actionuid).Select(s => new Log_List_Model()
             {
                 Id = s.Id,
                 ActionUid = s.ActionUid,

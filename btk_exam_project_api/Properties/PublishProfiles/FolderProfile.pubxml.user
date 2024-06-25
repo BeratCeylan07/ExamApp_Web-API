@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\beratceylan\Source\Repos\BeratCeylan07\ExamApp_Web-API\btk_exam_project_api\bin\Release\net7.0\publish\</_PublishTargetUrl>
-    <History>True|2024-06-24T17:56:54.7603994Z||;</History>
+    <History>True|2024-06-25T01:25:32.9850235Z||;True|2024-06-25T04:25:11.9445350+03:00||;True|2024-06-25T04:17:38.6796174+03:00||;True|2024-06-25T04:11:23.2029957+03:00||;True|2024-06-25T03:42:46.6755136+03:00||;True|2024-06-25T03:40:46.6701726+03:00||;True|2024-06-25T03:36:23.1342148+03:00||;True|2024-06-25T03:31:20.8944295+03:00||;True|2024-06-25T03:26:10.6967960+03:00||;True|2024-06-24T20:56:54.7603994+03:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

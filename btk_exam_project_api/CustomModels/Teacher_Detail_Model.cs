@@ -14,8 +14,8 @@ namespace btk_exam_project_api.CustomModels
         public string Eposta { get; set; }
         public DateTime IsCreatedDate { get; set; }
         public DateTime IsModifiedDate { get; set; }
-        public Kullanicilar isCreatedUser { get; set; }
-        public Kullanicilar IsModifiedUser { get; set; }
+        public string isCreatedUser { get; set; }
+        public string IsModifiedUser { get; set; }
     }
 }
 

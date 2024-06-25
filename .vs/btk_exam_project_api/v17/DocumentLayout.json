@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|c:\\users\\beratceylan\\source\\repos\\beratceylan07\\examapp_web-api\\btk_exam_project_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|solutionrelative:btk_exam_project_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|c:\\users\\beratceylan\\source\\repos\\beratceylan07\\examapp_web-api\\btk_exam_project_api\\controllers\\teacherapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|solutionrelative:btk_exam_project_api\\controllers\\teacherapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|c:\\users\\beratceylan\\source\\repos\\beratceylan07\\examapp_web-api\\btk_exam_project_api\\controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|solutionrelative:btk_exam_project_api\\controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|c:\\users\\beratceylan\\source\\repos\\beratceylan07\\examapp_web-api\\btk_exam_project_api\\controllers\\examapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|solutionrelative:btk_exam_project_api\\controllers\\examapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|c:\\users\\beratceylan\\source\\repos\\beratceylan07\\examapp_web-api\\btk_exam_project_api\\controllers\\studentapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|solutionrelative:btk_exam_project_api\\controllers\\studentapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|c:\\users\\beratceylan\\source\\repos\\beratceylan07\\examapp_web-api\\btk_exam_project_api\\custommodels\\lesson_list_model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|solutionrelative:btk_exam_project_api\\custommodels\\lesson_list_model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|c:\\users\\beratceylan\\source\\repos\\beratceylan07\\examapp_web-api\\btk_exam_project_api\\models\\der.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|solutionrelative:btk_exam_project_api\\models\\der.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|c:\\users\\beratceylan\\source\\repos\\beratceylan07\\examapp_web-api\\btk_exam_project_api\\custommodels\\teacher_detail_model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F240CB3F-EA21-40B4-A350-220B57230363}|btk_exam_project_api\\btk_exam_project_api.csproj|solutionrelative:btk_exam_project_api\\custommodels\\teacher_detail_model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\Program.cs",
-              "RelativeDocumentMoniker": "btk_exam_project_api\\Program.cs",
-              "ToolTip": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\Program.cs",
-              "RelativeToolTip": "btk_exam_project_api\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-24T18:29:02.113Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "StudentAPIController.cs",
-              "DocumentMoniker": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\Controllers\\StudentAPIController.cs",
-              "RelativeDocumentMoniker": "btk_exam_project_api\\Controllers\\StudentAPIController.cs",
-              "ToolTip": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\Controllers\\StudentAPIController.cs",
-              "RelativeToolTip": "btk_exam_project_api\\Controllers\\StudentAPIController.cs",
-              "ViewState": "AQIAAPIAAAAAAAAAAAA3wBsAAAARAAAA",
+              "Title": "Teacher_Detail_Model.cs",
+              "DocumentMoniker": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\CustomModels\\Teacher_Detail_Model.cs",
+              "RelativeDocumentMoniker": "btk_exam_project_api\\CustomModels\\Teacher_Detail_Model.cs",
+              "ToolTip": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\CustomModels\\Teacher_Detail_Model.cs",
+              "RelativeToolTip": "btk_exam_project_api\\CustomModels\\Teacher_Detail_Model.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-24T17:58:42.64Z",
+              "WhenOpened": "2024-06-25T16:38:41.849Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Lesson_List_Model.cs",
-              "DocumentMoniker": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\CustomModels\\Lesson_List_Model.cs",
-              "RelativeDocumentMoniker": "btk_exam_project_api\\CustomModels\\Lesson_List_Model.cs",
-              "ToolTip": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\CustomModels\\Lesson_List_Model.cs",
-              "RelativeToolTip": "btk_exam_project_api\\CustomModels\\Lesson_List_Model.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAoAAAAnAAAA",
+              "DocumentIndex": 0,
+              "Title": "TeacherAPIController.cs",
+              "DocumentMoniker": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\Controllers\\TeacherAPIController.cs",
+              "RelativeDocumentMoniker": "btk_exam_project_api\\Controllers\\TeacherAPIController.cs",
+              "ToolTip": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\Controllers\\TeacherAPIController.cs",
+              "RelativeToolTip": "btk_exam_project_api\\Controllers\\TeacherAPIController.cs",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAUwGUAAACBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-24T17:21:58.301Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Der.cs",
-              "DocumentMoniker": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\Models\\Der.cs",
-              "RelativeDocumentMoniker": "btk_exam_project_api\\Models\\Der.cs",
-              "ToolTip": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\Models\\Der.cs",
-              "RelativeToolTip": "btk_exam_project_api\\Models\\Der.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAxwBkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-24T17:22:04.131Z",
+              "WhenOpened": "2024-06-25T16:35:17.844Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "LessonController.cs",
-              "DocumentMoniker": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\Controllers\\LessonController.cs",
-              "RelativeDocumentMoniker": "btk_exam_project_api\\Controllers\\LessonController.cs",
-              "ToolTip": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\Controllers\\LessonController.cs",
-              "RelativeToolTip": "btk_exam_project_api\\Controllers\\LessonController.cs",
-              "ViewState": "AQIAAIEAAAAAAAAAAAAewJIAAAAMAAAA",
+              "Title": "ExamAPIController.cs",
+              "DocumentMoniker": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\Controllers\\ExamAPIController.cs",
+              "RelativeDocumentMoniker": "btk_exam_project_api\\Controllers\\ExamAPIController.cs",
+              "ToolTip": "C:\\Users\\beratceylan\\source\\repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\Controllers\\ExamAPIController.cs",
+              "RelativeToolTip": "btk_exam_project_api\\Controllers\\ExamAPIController.cs",
+              "ViewState": "AQIAAD4BAAAAAAAAAAAAAFwBAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T18:37:02.429Z",
+              "WhenOpened": "2024-06-25T08:41:15.51Z",
               "EditorCaption": ""
             }
           ]

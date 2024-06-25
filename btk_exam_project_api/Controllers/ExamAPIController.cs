@@ -56,7 +56,7 @@ namespace btk_exam_project_api.Controllers
                 return await _context.DenemeSinavs.Where(x => x.Subeid == subeID && x.DenemeSinaviOturums.Where(a => a.Tarih.Date == DateTime.Now.Date).Count() > 0).Select(s => new ExamDashboardChartModel()
                 {
                     label = s.DenemeAdi + " " + s.YayinAdi + " / " + s.SinavKategori,
-                    y = _context.UserOturumSets.Where(x => x.Oturum.DenemeSinavId == s.Id).Count()
+                    y = _context.DenemeSinaviOturums.Where(x => x.DenemeSinav.Id == s.Id).Count()
                 }).ToListAsync();
             }
             else
@@ -141,7 +141,6 @@ namespace btk_exam_project_api.Controllers
                 Baslik = "Yeni Deneme Sınavı",
                 Aciklama = "Yeni Deneme Sınavı Açıldı",
                 UserId = model.userID,
-                SubeId = model.Subeid
             };
             postActionLog(actionLog);
             return Ok();
@@ -174,7 +173,6 @@ namespace btk_exam_project_api.Controllers
                 Baslik = "Yeni Oturum",
                 Aciklama = "Deneme Sınavı İçin Yeni Oturum Açıldı",
                 UserId = model.userid,
-                SubeId = subeID
             };
             postActionLog(actionLog);
             return Ok();
@@ -346,7 +344,6 @@ namespace btk_exam_project_api.Controllers
                 Baslik = "Deneme Sınavına Öğrenci Kaydı",
                 Aciklama = "Öğrenci Deneme Sınavına Kaydedildi",
                 UserId = model.userID,
-                SubeId = subeID
             };
             postActionLog(actionLog);
             return Ok();
@@ -372,7 +369,6 @@ namespace btk_exam_project_api.Controllers
                 Baslik = "Deneme Sınavı",
                 Aciklama = "Deneme Sınavı Bilgileri Güncellendi",
                 UserId = model.userID,
-                SubeId = exam.Subeid
             };
             postActionLog(actionLog);
             return Ok();
@@ -394,7 +390,6 @@ namespace btk_exam_project_api.Controllers
                 Baslik = "Deneme Sınavı Oturumu",
                 Aciklama = "Oturum Bilgileri Güncellendi",
                 UserId = model.userid,
-                SubeId = model.subeID
             };
             postActionLog(actionLog);
             return Ok();
@@ -430,7 +425,6 @@ namespace btk_exam_project_api.Controllers
                 IsModifiedUserid = model.userID,
                 MesajTarih = DateTime.Now,
                 Mesaj = model.mesaj,
-                SubeId = model.subeID,
                 UserId = studentID
             };
             await _context.KullaniciMesajLogs.AddAsync(message_log);
@@ -441,7 +435,6 @@ namespace btk_exam_project_api.Controllers
                 Baslik = "Whatsapp",
                 Aciklama = "Whatsapp Mesajı Gönderildi",
                 UserId = model.userID,
-                SubeId = model.subeID
             };
             postActionLog(actionLog);
             return Ok();
@@ -456,7 +449,6 @@ namespace btk_exam_project_api.Controllers
                     {
                         Uid = s.Uid,
                         Student = s.User,
-                        IsActive = s.IsActive,
                         Mesaj = s.Mesaj.ToString().Replace("%0A", "\n"),
                         MesajTarih = s.MesajTarih,
                         IsCreatedUserid = s.IsCreatedUserid,
@@ -509,7 +501,6 @@ namespace btk_exam_project_api.Controllers
                 Aciklama = model.Aciklama,
                 IsCreatedDate = DateTime.Now,
                 ActionUid = model.ActionUid,
-                SubeId = model.SubeId,
                 UserId = model.UserId
             };
             _context.ActionLogs.Add(action_log);

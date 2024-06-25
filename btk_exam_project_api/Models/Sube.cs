@@ -27,7 +27,5 @@ public partial class Sube
 
     public virtual ICollection<Der> Ders { get; set; } = new List<Der>();
 
-    public virtual ICollection<KullaniciMesajLog> KullaniciMesajLogs { get; set; } = new List<KullaniciMesajLog>();
-
     public virtual ICollection<Kullanicilar> Kullanicilars { get; set; } = new List<Kullanicilar>();
 }

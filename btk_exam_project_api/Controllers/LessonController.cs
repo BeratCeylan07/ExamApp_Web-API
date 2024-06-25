@@ -239,9 +239,9 @@ namespace btk_exam_project_api.Controllers
             return Ok();
 
         }
-        
 
-        
+
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Kullanicilar>>> teacher_list(int subeID)
         {
