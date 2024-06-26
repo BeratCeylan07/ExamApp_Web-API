@@ -16,6 +16,7 @@ namespace btk_exam_project_api.CustomModels
         public string SinavYeri { get; set; }
         public double? Ucret { get; set; }
         public int? KitapcikToplam { get; set; }
+        public bool DortBirRule { get; set; }
         public double? KitapcikAdetMaliyet { get; set; }
         public Kullanicilar IsCreatedUser { get; set; }
         public DateTime IsCreatedDate { get; set; }

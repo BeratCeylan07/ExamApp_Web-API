@@ -22,6 +22,8 @@ namespace btk_exam_project_api.CustomModels
 
         public string sinavYeri { get; set; }
         public double? KitapcikAdetMaliyet { get; set; }
+        public bool DortBirRule { get; set; }
+
     }
 }
 

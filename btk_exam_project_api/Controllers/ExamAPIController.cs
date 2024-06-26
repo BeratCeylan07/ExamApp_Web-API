@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.OpenApi.Writers;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -196,7 +197,8 @@ namespace btk_exam_project_api.Controllers
                 Ucret = s.Ucret,
                 YayinLogo = s.YayinLogo,
                 SinavKategori = s.SinavKategori,
-                KitapcikToplam = s.KitapcikToplam
+                KitapcikToplam = s.KitapcikToplam,
+                DortBirRule = s.DortBirRule
             }).FirstOrDefaultAsync();
         }
         [HttpGet]
@@ -232,8 +234,8 @@ namespace btk_exam_project_api.Controllers
                 SessionSetId = s.Id,
                 SessionSetUID = s.Uid,
                 Status = s.Status,
-                Students = s.User,
-                Sessions = s.Oturum,
+                Students = s.User.Ad + " " + s.User.Soyad,
+                oturumTarihi = s.Oturum.Tarih,
                 dogru = s.Dogru,
                 yanlis = s.Yanlis,
                 net = s.Net
@@ -250,8 +252,8 @@ namespace btk_exam_project_api.Controllers
                 SessionSetId = s.Id,
                 SessionSetUID = s.Uid,
                 Status = s.Status,
-                Students = s.User,
-                Sessions = s.Oturum,
+                Students = s.User.Ad + " " + s.User.Soyad,
+                oturumTarihi = s.Oturum.Tarih,
                 dogru = s.Dogru,
                 yanlis = s.Yanlis,
                 net = s.Net
@@ -279,7 +281,7 @@ namespace btk_exam_project_api.Controllers
             sessionset.Yanlis = model.y;
             sessionset.Status = 2;
             double net_Sonuc = model.d - model.y / 4;
-            if (dortBirRule == true)
+            if (dortBirRule)
             {
                 sessionset.Net = net_Sonuc;
             }
@@ -292,6 +294,31 @@ namespace btk_exam_project_api.Controllers
 
             return Ok();
 
+        }
+        [HttpGet]
+        public async Task<ActionResult<string>> ExamAllScoreSet(string examUID)
+        {
+            bool examRule = await _context.DenemeSinavs.Where(x => x.Uid == examUID).Select(s => s.DortBirRule).FirstAsync();
+            var examList = await _context.UserOturumSets.Where(x => x.Oturum.DenemeSinav.Uid == examUID).ToListAsync();
+            double? dogru = 0.00;
+            double? yanlis = 0.00;
+            double? net = 0.00;
+            foreach (var exam in examList)
+            {
+                exam.Status = 2;
+                dogru = exam.Dogru;
+                yanlis = exam.Yanlis;
+                net = dogru - yanlis / 4;
+                if (examRule)
+                {
+                    exam.Net = net;
+                }
+                else
+                {
+                    exam.Net = dogru;
+                }
+            }
+            return Ok();
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DenemeSinaviOturum>>> SessionListOfExam(string examUID)
@@ -361,6 +388,7 @@ namespace btk_exam_project_api.Controllers
             exam.KitapcikToplam = model.KitapcikToplam;
             exam.KitapcikAdetMaliyet = model.KitapcikAdetMaliyet;
             exam.SinavYeri = model.sinavYeri;
+            exam.DortBirRule = model.DortBirRule;
             _context.Entry(exam).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             var actionLog = new ActionLog

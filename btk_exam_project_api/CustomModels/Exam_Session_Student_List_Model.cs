@@ -10,8 +10,8 @@ namespace btk_exam_project_api.CustomModels
         public DateTime IsCreatedDate { get; set; }
         public bool IsActive { get; set; }
         public int Status { get; set; }
-        public Kullanicilar Students { get; set; }
-        public DenemeSinaviOturum Sessions { get; set; } 
+        public string Students { get; set; }
+        public DateTime oturumTarihi { get; set; } 
         public double? dogru { get; set; }
         public double? yanlis { get; set; }
         public double? net { get; set; }
