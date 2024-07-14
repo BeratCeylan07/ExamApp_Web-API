@@ -2,7 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\btk_exam_project_api",
-    "\\btk_exam_project_api\\Controllers"
+    "\\btk_exam_project_api\\Controllers",
+    "\\btk_exam_project_api\\Models"
   ],
   "SelectedNode": "\\btk_exam_project_api\\Program.cs",
   "PreviewInSolutionExplorer": false
