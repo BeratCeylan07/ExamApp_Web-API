@@ -1,33 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\beratceylan\\Source\\Repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\btk_exam_project_api.csproj": {}
+    "/Users/beratceylan/Documents/GitHub/ExamApp_Web-API/btk_exam_project_api/btk_exam_project_api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\beratceylan\\Source\\Repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\btk_exam_project_api.csproj": {
+    "/Users/beratceylan/Documents/GitHub/ExamApp_Web-API/btk_exam_project_api/btk_exam_project_api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\beratceylan\\Source\\Repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\btk_exam_project_api.csproj",
+        "projectUniqueName": "/Users/beratceylan/Documents/GitHub/ExamApp_Web-API/btk_exam_project_api/btk_exam_project_api.csproj",
         "projectName": "btk_exam_project_api",
-        "projectPath": "C:\\Users\\beratceylan\\Source\\Repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\btk_exam_project_api.csproj",
-        "packagesPath": "C:\\Users\\beratceylan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\beratceylan\\Source\\Repos\\BeratCeylan07\\ExamApp_Web-API\\btk_exam_project_api\\obj\\",
+        "projectPath": "/Users/beratceylan/Documents/GitHub/ExamApp_Web-API/btk_exam_project_api/btk_exam_project_api.csproj",
+        "packagesPath": "/Users/beratceylan/.nuget/packages/",
+        "outputPath": "/Users/beratceylan/Documents/GitHub/ExamApp_Web-API/btk_exam_project_api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\beratceylan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/beratceylan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -43,8 +40,8 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
@@ -102,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

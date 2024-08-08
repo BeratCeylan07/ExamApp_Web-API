@@ -42,13 +42,13 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin", builder =>
     {
 
-        //builder.WithOrigins("https://angular-app-education.web.app")
-        //       .AllowAnyHeader()
-        //       .AllowAnyMethod();
+        builder.WithOrigins("https://angular-app-education.web.app")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
 
-        builder.WithOrigins("http://localhost:4200")
-       .AllowAnyHeader()
-       .AllowAnyMethod();
+       //  builder.WithOrigins("http://localhost:4200")
+       // .AllowAnyHeader()
+       // .AllowAnyMethod();
     });
 });
 

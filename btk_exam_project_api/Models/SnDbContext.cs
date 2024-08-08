@@ -42,7 +42,7 @@ public partial class SnDbContext : DbContext
     public virtual DbSet<UserOturumSet> UserOturumSets { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("server=sql.bsite.net\\MSSQL2016;database=beratceylan0007_SampleDB;User Id=beratceylan0007_SampleDB;Password=960607Brt.;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("server=exam_db.mssql.somee.com;database=exam_db;User Id=beratceylan007_SQLLogin_1;Password=npyvpz9tbx;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
